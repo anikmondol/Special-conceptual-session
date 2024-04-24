@@ -14,6 +14,60 @@ for (let btn of allBtn) {
 
     // set element in html file
     const selectedPlayersContainer = document.getElementById('selected-players-container');
+
+
+    event.target.setAttribute("disabled", false);
+
+
+
+
+
+
+
+    // update baguet
+
+    const baguet = getConvertNumber('budget');
+    document.getElementById('budget').innerText = baguet - parseInt(price);
+
+
+
+
+
+    // validation for selected cart 
+
+    const firstCartCount = getConvertNumber('cart');
+    const firstLeft = getConvertNumber('left');
+
+    if (firstCartCount + 1 > 6 || firstLeft - 1 < 0) {
+      return alert(`limit sesh are hobe na`)
+    }
+
+    event.target.parentNode.style.backgroundColor = 'gray'
+
+
+
+
+    // update cart
+
+    const cart = getConvertNumber('cart');
+    document.getElementById('cart').innerText = cart + 1;
+
+
+    // update left
+
+    const left = getConvertNumber('left');
+    document.getElementById('left').innerText = left - 1;
+
+
+
+
+
+
+
+
+
+
+
     const div = document.createElement('div');
 
     div.classList.add('selected-players')
@@ -55,8 +109,9 @@ function updateGrandTotal(status) {
     if (inputValue == 'anik') {
       const disCount = totalCoast * 0.20;
       document.getElementById('grand-total').innerText = totalCoast - disCount;
-      document.getElementById('apply-btn').setAttribute(disable, false);
-    }else{
+      const btn_des = document.getElementById('apply-btn');
+      btn_des.setAttribute("disabled", false);
+    } else {
       alert('please enter valid coupon code')
     }
   } else {
